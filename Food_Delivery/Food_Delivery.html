@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Food Delivery</title>
+    <link rel="stylesheet" href="Food_Delivery.css">
+    <script type="text/javascript">
+      function placeorder()
+      {
+        document.getElementById('order summary').style.display="block";
+
+
+        uname=document.getElementById('txtname');
+        mobile=document.getElementById('txtmobile');
+        burger=document.getElementById('optburger');
+        rolls=document.getElementById('optroller');
+        fries=document.getElementById('optfries');
+
+        var mcost=0;
+        var acost=0;
+        var mname=" ";
+        var aname=" ";
+        if(burger.checked){
+          mcost=120;
+          mname=burger.value;
+        }
+        if(rolls.checked){
+          mcost=100;
+          mname=rolls.value;
+        }
+        if (fries.checked) {
+          acost=60;
+          mcost+=acost;
+          aname+=fries.value+"<br>";
+        }
+        document.getElementById('lblname').innerHTML=uname.value;
+        document.getElementById('lblmobile').innerHTML=mobile.value;
+        document.getElementById('lblmeal').innerHTML=mname;
+        document.getElementById('lbladd').innerHTML=aname;
+        document.getElementById('lblamount').innerHTML=mcost;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="">
+      <font size="6">
+        <table width='800' border="2" cellspacing="4" cellpadding="4" align="center" id="ortd">
+          <tr>
+            <td colspan="2">WELCOME TO ZOMATO BETA!</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <img src="food.jpg" id="food" alt="food" width="100" height="100">
+
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">Customer Details</td>
+
+          </tr>
+          <tr>
+            <td>Customer Name</td>
+            <td><input type="text" placeorder="Name" id="txtname"></td>
+          </tr>
+          <tr>
+            <td>Customer Mobile</td>
+            <td><input type="text" placeorder="Mobile Number"id="txtmobile"></td>
+          </tr>
+          <tr>
+            <td colspan="2">Select a Meal</td>
+          </tr>
+          <tr>
+            <td><img src="burger.jpg" id="burger" alt="burger" width="100" height="100">
+            <br>
+            <input type="radio" name="meal" id="optburger" value="OMG!Burger">Burger(&#8377;120/-)
+            </td>
+
+            <td>
+              <img src="rolls.jpg" id="rolls"alt="Rolls" width="100" height="100">
+              <br>
+              <input type="radio" name="meal" id="optroller" value="OMG!Rolls">Rolls(&#8377;100/-)
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              Select Add-on's
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><img src="fries.jpg" id="fries"alt="fries" width="100" height="100">
+              <br>
+              <input type="checkbox" id="optfries" name="meal" value="Fries">Fries(&#8377;80/-)
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="button" id="btn" value="Place Order" onclick="placeorder()"></td>
+          </tr>
+        </table>
+        <br>
+        <dl id="order summary" style="display:none;">
+          <h2>Order Summary</h2>
+          <dt>Customer Name</dt>
+          <dd id="lblname"></dd>
+          <dt>Mobile</dt>
+          <dd id="lblmobile"></dd>
+          <dt>Meal</dt>
+          <dd id="lblmeal"></dd>
+          <dt>ADD-on's</dt>
+          <dd id="lbladd"></dd>
+          <dt>Total Amount</dt>
+          <dd id="lblamount"></dd>
+          <br>
+          <input type="button" id="btn" value="Print Bill" onclick="window.print()">
+        </dl>
+    </div>
+  </body>
+</html>
